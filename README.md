@@ -2,57 +2,30 @@
 
 **AI-powered quiz generation, evaluation, and classroom management platform.**
 
-Quizify is a full-stack web application that revolutionizes how educators create, administer, and grade quizzes. By leveraging Claude AI, it automates question generation from course materials, provides intelligent grading for subjective answers, and offers comprehensive analytics to track student performance and academic integrity.
+Quizify is a full-stack web application that revolutionizes how educators create, administer, and grade quizzes. By leveraging Grok AI (xAI), it automates question generation from course materials, provides intelligent grading for subjective answers, and offers comprehensive analytics to track student performance and academic integrity.
 
 ---
 
 [![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![Built with Node.js](https://img.shields.io/badge/Built%20with-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Powered by Claude](https://img.shields.io/badge/Powered%20by-Claude-000000?style=for-the-badge&logo=anthropic&logoColor=white)](https://www.anthropic.com/)
+[![Powered by Grok](https://img.shields.io/badge/Powered%20by-Grok-000000?style=for-the-badge&logo=xai&logoColor=white)](https://x.ai/)
 [![Database](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
 ---
 
-## 📸 Screenshots
+## 📋 Table of Contents
 
-### 1. Dashboard
-*Overview of classes, recent quizzes, and quick actions for teachers.*
-
-<img src="quizify-01-dashboard.jpg" alt="Dashboard" width="800"/>
-
-**Key Features:**
-- Welcome message with teacher name
-- Recent quizzes with status
-- My Classes section with student count
-- Quick "Generate Quiz with AI" action
-- Sidebar navigation
-
----
-
-### 2. AI Quiz Generator
-*Create quizzes using RAG with uploaded source material. Questions are grounded in your content.*
-
-<img src="quizify-02-ai-quiz-generator.jpg" alt="AI Quiz Generator" width="800"/>
-
-**Form Fields:**
-- Quiz Title
-- Class Selection
-- Source Material Upload (`.txt`)
-- Question Types (Objective / Subjective)
-- Difficulty Level (1–10)
-
----
-
-### 3. Classes & Roster
-*Manage classes, sections, and student enrollment.*
-
-<img src="quizify-03-classes-roster.jpg" alt="Classes & Roster" width="800"/>
-
-**Features:**
-- Class list with subject and session
-- Student roster with roll numbers
-- Bulk import via CSV
-- Enroll students individually
+- [✨ Key Features](#-key-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🚀 Getting Started](#-getting-started)
+- [🧩 Design & Implementation Notes](#-design--implementation-notes)
+- [🎨 UI Design](#-ui-design)
+- [🔧 Environment Variables](#-environment-variables)
+- [📊 API Endpoints](#-api-endpoints)
+- [📝 License](#-license)
+- [🤝 Contributing](#-contributing)
+- [💬 Support](#-support)
 
 ---
 
@@ -76,12 +49,12 @@ Quizify is a full-stack web application that revolutionizes how educators create
 ### 🤖 AI Quiz Generation (RAG)
 - Upload source material (`.txt` files)
 - Intelligent text chunking and retrieval
-- Context-aware question generation with Claude
+- Context-aware question generation with **Grok AI (xAI)**
 - Support for objective (MCQ) and subjective questions
 
 ### 📝 AI Grading
 - Automatic grading of subjective answers
-- Model answer comparison with Claude
+- Model answer comparison with Grok AI
 - Detailed feedback for students
 - Teacher override capability
 
@@ -97,17 +70,23 @@ Quizify is a full-stack web application that revolutionizes how educators create
 - Flagged attempts list
 - Visual charts and statistics
 
+### 🎨 Modern UI
+- Purple/indigo color palette (`#241752` → `#7C4FDE`)
+- Clean card-based layout
+- Responsive sidebar navigation
+- Dedicated dashboards for different user roles
+
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| **Frontend** | React 18, Vite, Tailwind CSS |
-| **Backend** | Node.js, Express |
-| **Database** | PostgreSQL via Supabase |
-| **AI Services** | Anthropic Claude API |
-| **Authentication** | JWT |
+| Layer | Technology | Description |
+|-------|------------|-------------|
+| **Frontend** | React 18, Vite, Tailwind CSS | Modern, fast UI development |
+| **Backend** | Node.js, Express | RESTful API server |
+| **Database** | PostgreSQL via Supabase | Cloud-hosted relational database |
+| **AI Services** | **Grok AI by xAI** | Quiz generation & grading |
+| **Authentication** | JWT | Secure session management |
 
 ---
 
@@ -115,50 +94,52 @@ Quizify is a full-stack web application that revolutionizes how educators create
 
 ```
 quizify/
-├── backend/
+├── backend/                    # Express API
 │   ├── src/
-│   │   ├── server.js
-│   │   ├── config/db.js
-│   │   ├── middleware/auth.js
+│   │   ├── server.js           # Entry point
+│   │   ├── config/
+│   │   │   └── db.js           # Database configuration
+│   │   ├── middleware/
+│   │   │   └── auth.js         # JWT authentication
 │   │   ├── lib/
-│   │   │   ├── aiClient.js
-│   │   │   └── chunkText.js
+│   │   │   ├── aiClient.js     # Grok AI API integration
+│   │   │   └── chunkText.js    # RAG text chunking
 │   │   └── routes/
-│   │       ├── auth.js
-│   │       ├── classes.js
-│   │       ├── students.js
-│   │       ├── quizzes.js
-│   │       ├── attempts.js
-│   │       └── analytics.js
+│   │       ├── auth.js         # Authentication endpoints
+│   │       ├── classes.js      # Class management
+│   │       ├── students.js     # Student management
+│   │       ├── quizzes.js      # Quiz generation & management
+│   │       ├── attempts.js     # Quiz attempts & grading
+│   │       └── analytics.js    # Analytics endpoints
 │   ├── package.json
 │   └── .env.example
 │
-├── frontend/
+├── frontend/                   # React application
 │   ├── src/
 │   │   ├── pages/
 │   │   │   ├── Login.jsx
 │   │   │   ├── Register.jsx
 │   │   │   ├── StudentDashboard.jsx
 │   │   │   ├── TeacherDashboard.jsx
-│   │   │   ├── AILab.jsx
-│   │   │   ├── Evaluations.jsx
-│   │   │   ├── Analytics.jsx
-│   │   │   └── QuizTake.jsx
+│   │   │   ├── AILab.jsx       # Quiz generation interface
+│   │   │   ├── Evaluations.jsx # Grading interface
+│   │   │   ├── Analytics.jsx   # Analytics dashboard
+│   │   │   └── QuizTake.jsx    # Student quiz attempt
 │   │   ├── components/
 │   │   │   ├── Layout.jsx
 │   │   │   ├── Sidebar.jsx
 │   │   │   └── ProtectedRoute.jsx
-│   │   ├── context/AuthContext.jsx
-│   │   └── lib/api.js
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx
+│   │   └── lib/
+│   │       └── api.js          # API client
 │   ├── package.json
 │   └── .env.example
 │
 ├── database/
-│   └── schema.sql
+│   └── schema.sql              # Supabase database schema
 │
-├── quizify-01-dashboard.jpg
-├── quizify-02-ai-quiz-generator.jpg
-├── quizify-03-classes-roster.jpg
+├── .gitignore
 └── README.md
 ```
 
@@ -168,101 +149,183 @@ quizify/
 
 ### Prerequisites
 
+Before you begin, ensure you have the following installed:
+
 - **Node.js** (v16 or higher)
 - **npm** (v7 or higher)
-- **Supabase** account ([sign up](https://supabase.com/))
-- **Anthropic** API key ([get it](https://console.anthropic.com/settings/keys))
+- **Git**
+- A **Supabase** account ([sign up here](https://supabase.com/))
+- A **Grok AI (xAI)** API key ([get it here](https://x.ai/))
 
 ### 1. Set up Supabase (Database)
 
 1. Create a new project on [Supabase](https://supabase.com/).
-2. Navigate to **SQL Editor**.
-3. Copy and run `database/schema.sql`.
-4. Copy your **Connection string** from Project Settings → Database.
+2. Note your project URL and API keys.
+3. Navigate to the **SQL Editor** in your Supabase dashboard.
+4. Copy the entire contents of `database/schema.sql` and paste it into the SQL editor.
+5. Click **Run** to create all tables and relationships.
+6. Go to **Project Settings → Database** and copy the **Connection string** (URI).
 
 ### 2. Backend Setup
 
 ```bash
-cd backend
+# Clone the repository
+git clone https://github.com/yourusername/quizify.git
+cd quizify/backend
+
+# Copy environment variables
 cp .env.example .env
 
-# Edit .env with:
-# DATABASE_URL=your_supabase_connection_string
-# JWT_SECRET=your_secret_key
-# ANTHROPIC_API_KEY=your_api_key
+# Edit .env with your credentials:
+# - DATABASE_URL: Your Supabase connection string
+# - JWT_SECRET: A random string for JWT signing
+# - XAI_API_KEY: Your Grok AI API key
 
+# Install dependencies
 npm install
+
+# Start the development server
 npm run dev
 ```
 
-API runs on `http://localhost:4000`.
+The backend API will be available at `http://localhost:4000`.
 
 ### 3. Frontend Setup
 
 ```bash
-cd frontend
+cd ../frontend
+
+# Copy environment variables
 cp .env.example .env
 
-# Edit .env:
-# VITE_API_URL=http://localhost:4000/api
+# Edit .env with your backend URL:
+# - VITE_API_URL=http://localhost:4000/api
 
+# Install dependencies
 npm install
+
+# Start the development server
 npm run dev
 ```
 
-App runs on `http://localhost:5173`.
+The frontend will be available at `http://localhost:5173`.
 
-### 4. Try the AI Flow
+### 4. Try the Full AI Flow
 
-**Teacher:**
-1. Register as teacher
-2. Create a class
-3. Go to **AI Lab**
-4. Upload `.txt` file → Generate quiz
-5. Publish quiz
+#### As a Teacher:
 
-**Student:**
-1. Register as student
-2. Take quiz from dashboard
-3. Submit answers
+1. **Register** a teacher account at `/register`.
+2. **Create a class** from the dashboard.
+3. (Optional) **Enroll students** manually or via CSV bulk import.
+4. Navigate to the **AI Lab**.
+5. **Fill in the form**:
+   - Quiz title
+   - Target class
+   - Upload a `.txt` file with lesson notes
+   - Select question types and difficulty
+   - Choose total number of questions
+6. Click **Generate with AI** and wait for Grok to create your quiz.
+7. Go to **Quizzes** and **Publish** the draft.
+8. Wait for students to take the quiz.
 
-**Teacher:**
-1. Go to **Evaluations** → View AI grades
-2. Override if needed
-3. Check **Analytics** for performance
+#### As a Student:
+
+1. **Register** a student account (or be bulk-imported).
+2. Log in and see available quizzes on the **Smart Prep** dashboard.
+3. **Take a quiz** - the system monitors tab-switches and paste events.
+4. Submit your answers.
+
+#### Back as a Teacher:
+
+1. Go to **Evaluations** to see AI-suggested grades for subjective answers.
+2. **Review and override** grades if needed.
+3. Visit the **Analytics** dashboard for:
+   - Average scores
+   - Class performance
+   - Flagged attempts (anomaly scores)
 
 ---
 
-## 🧩 Implementation Notes
+## 🧩 Design & Implementation Notes
 
-### Lightweight RAG
-- Uses **keyword-overlap scoring** (no vector DB required)
-- Upgrade: Enable `vector` extension in Supabase for semantic search
+### RAG Implementation with Grok AI
 
-### Cheating Detection
-- Monitors tab-switch, paste, and dev-tools events
-- Weights configurable in `backend/src/routes/attempts.js`
+**Current Approach:**
+- Uses **keyword-overlap scoring** in `retrieveRelevantChunks`.
+- No vector embeddings required.
+- Simple and cost-effective for small to medium documents.
 
-### Bulk Import
-- Generates temporary passwords (displayed once)
-- Production: Integrate email service for secure delivery
+**Upgrade Path:**
+1. Enable the `vector` extension in Supabase (commented in `schema.sql`).
+2. Generate embeddings for each chunk using an embeddings API.
+3. Store embeddings in Supabase's vector column.
+4. Replace keyword scoring with **cosine similarity** for semantic search.
+
+### Cheating Detection Mechanism
+
+**Current Heuristic:**
+- Monitors tab-switch events (weight: 0.4)
+- Tracks paste operations (weight: 0.3)
+- Detects dev-tools opening (weight: 0.2)
+- Captures other suspicious events (weight: 0.1)
+
+**Configuration:**
+Weights are adjustable in `backend/src/routes/attempts.js`. You can tune them based on your requirements or replace with a trained ML model.
+
+### Bulk Import Considerations
+
+**Current Implementation:**
+- Generates temporary passwords displayed once to the teacher.
+- Students must be given their credentials manually.
+
+**Production Recommendation:**
+- Integrate an email service (e.g., Resend, SendGrid).
+- Use Supabase Auth's built-in email invites.
+- Automatically send credentials to students via email.
+
+---
+
+## 🎨 UI Design
+
+The Quizify interface features a cohesive design inspired by the Quizify logo (a brain with a question mark):
+
+- **Primary Colors:** `#241752` (deep purple) → `#7C4FDE` (violet)
+- **Layout:** Clean white cards with subtle shadows
+- **Navigation:** Persistent sidebar for easy access
+- **Responsive:** Optimized for desktop and tablet screens
+
+**Dashboard Views:**
+- **Student:** "Smart Prep" home with available quizzes
+- **Teacher:** AI Lab, Evaluations, Analytics, and Class Management
 
 ---
 
 ## 🔧 Environment Variables
 
 ### Backend (.env)
+
 ```env
-DATABASE_URL=postgresql://...
-JWT_SECRET=your_secret_key
-ANTHROPIC_API_KEY=sk-ant-...
+# Database
+DATABASE_URL=postgresql://postgres:password@db.supabase.co:5432/postgres
+
+# JWT
+JWT_SECRET=your_super_secret_jwt_key_here
+
+# AI - Grok by xAI
+XAI_API_KEY=your_grok_api_key_here
+
+# CORS
 CORS_ORIGIN=http://localhost:5173
+
+# Server
 PORT=4000
 NODE_ENV=development
 ```
 
 ### Frontend (.env)
+
 ```env
+# API URL
 VITE_API_URL=http://localhost:4000/api
 ```
 
@@ -271,60 +334,121 @@ VITE_API_URL=http://localhost:4000/api
 ## 📊 API Endpoints
 
 ### Authentication
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register user |
-| POST | `/api/auth/login` | Login |
-| GET | `/api/auth/me` | Get profile |
 
-### Classes
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/classes` | Get all classes |
-| POST | `/api/classes` | Create class |
-| POST | `/api/classes/:id/enroll` | Enroll student |
-| POST | `/api/classes/:id/bulk-import` | Bulk import CSV |
+| POST | `/api/auth/register` | Register a new user (teacher or student) |
+| POST | `/api/auth/login` | Login and receive JWT token |
+| GET | `/api/auth/me` | Get current user profile |
+| POST | `/api/auth/logout` | Logout (invalidate token) |
 
-### Quizzes
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/quizzes` | Get quizzes |
-| POST | `/api/quizzes/generate` | Generate with AI |
-| POST | `/api/quizzes/:id/publish` | Publish quiz |
-| POST | `/api/quizzes/:id/source-material` | Upload source |
+### Classes & Students
 
-### Attempts
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/attempts` | Start attempt |
-| PUT | `/api/attempts/:id/submit` | Submit quiz |
-| PUT | `/api/attempts/:id/grade` | AI grade |
-| PUT | `/api/attempts/:id/override` | Override grade |
-| GET | `/api/analytics` | Get analytics |
+| GET | `/api/classes` | Get all classes for a teacher |
+| POST | `/api/classes` | Create a new class |
+| GET | `/api/classes/:id` | Get class details with roster |
+| PUT | `/api/classes/:id` | Update class information |
+| DELETE | `/api/classes/:id` | Delete a class |
+| POST | `/api/classes/:id/enroll` | Enroll a student in a class |
+| POST | `/api/classes/:id/bulk-import` | Bulk import students via CSV |
+
+### Quizzes & AI
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/quizzes` | Get all quizzes (filtered by role) |
+| POST | `/api/quizzes` | Create a new quiz (draft) |
+| POST | `/api/quizzes/generate` | Generate quiz with Grok AI |
+| GET | `/api/quizzes/:id` | Get quiz details with questions |
+| PUT | `/api/quizzes/:id` | Update quiz |
+| POST | `/api/quizzes/:id/publish` | Publish a quiz |
+| POST | `/api/quizzes/:id/source-material` | Upload source material for AI generation |
+
+### Attempts & Analytics
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/attempts` | Get all attempts (teacher view) |
+| POST | `/api/attempts` | Start a new quiz attempt |
+| PUT | `/api/attempts/:id/submit` | Submit a quiz attempt |
+| GET | `/api/attempts/:id` | Get attempt details with answers |
+| PUT | `/api/attempts/:id/grade` | AI-grade subjective answers using Grok |
+| PUT | `/api/attempts/:id/override` | Teacher override grade |
+| GET | `/api/analytics` | Get analytics dashboard data |
+| GET | `/api/analytics/class/:id` | Get class-specific analytics |
 
 ---
 
 ## 📝 License
 
-MIT License - see [LICENSE](LICENSE) file.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License
+
+Copyright (c) 2024 Quizify
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 ---
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
+We welcome contributions! Please follow these steps:
+
+1. **Fork** the repository.
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`).
+3. **Commit** your changes (`git commit -m 'Add some amazing feature'`).
+4. **Push** to the branch (`git push origin feature/amazing-feature`).
+5. **Open** a Pull Request.
+
+### Development Guidelines
+
+- Follow the existing code style (ESLint, Prettier)
+- Write tests for new features
+- Update the README if you change setup instructions
+- Use conventional commit messages (`feat:`, `fix:`, `docs:`, etc.)
 
 ---
 
 ## 💬 Support
+
+For support, questions, or feedback:
 
 - **GitHub Issues:** [Open an issue](https://github.com/yourusername/quizify/issues)
 - **Email:** support@quizify.com
 
 ---
 
-**Built with ❤️ using React, Node.js, and Claude**
+## 🎯 Future Roadmap
+
+- [ ] Support for PDF and DOCX uploads
+- [ ] Email notifications for students
+- [ ] More question types (true/false, fill-in-the-blank)
+- [ ] Timed quizzes with auto-submission
+- [ ] Export results as CSV/PDF
+- [ ] Mobile application (React Native)
+- [ ] Integration with popular LMS platforms (Canvas, Moodle)
+
+---
+
+**Built with ❤️ using React, Node.js, and Grok AI (xAI)**
