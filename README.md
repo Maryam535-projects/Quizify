@@ -1,17 +1,15 @@
-I have created a comprehensive and professional README file for your Quizify project. It includes all the essential sections for a complete project documentation.
-```markdown
 # 🧠 Quizify
 
 **AI-powered quiz generation, evaluation, and classroom management platform.**
 
 Quizify is a full-stack web application that revolutionizes how educators create, administer, and grade quizzes. By leveraging Claude AI, it automates question generation from course materials, provides intelligent grading for subjective answers, and offers comprehensive analytics to track student performance and academic integrity.
 
+---
+
 [![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![Built with Node.js](https://img.shields.io/badge/Built%20with-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Powered by Claude](https://img.shields.io/badge/Powered%20by-Claude-000000?style=for-the-badge&logo=anthropic&logoColor=white)](https://www.anthropic.com/)
 [![Database](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
-[![Deploy on Vercel](https://img.shields.io/badge/Deploy%20on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
-[![Deploy on Render](https://img.shields.io/badge/Deploy%20on-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
 
 ---
 
@@ -26,22 +24,10 @@ Quizify is a full-stack web application that revolutionizes how educators create
   - [2. Backend Setup](#2-backend-setup)
   - [3. Frontend Setup](#3-frontend-setup)
   - [4. Try the Full AI Flow](#4-try-the-full-ai-flow)
-- [🌐 Deployment](#-deployment)
-  - [Backend → Render](#backend--render)
-  - [Frontend → Vercel](#frontend--vercel)
 - [🧩 Design & Implementation Notes](#-design--implementation-notes)
-  - [Lightweight RAG Implementation](#lightweight-rag-implementation)
-  - [Cheating Detection Mechanism](#cheating-detection-mechanism)
-  - [Bulk Import Considerations](#bulk-import-considerations)
 - [🎨 UI Design](#-ui-design)
 - [🔧 Environment Variables](#-environment-variables)
-  - [Backend (.env)](#backend-env)
-  - [Frontend (.env)](#frontend-env)
 - [📊 API Endpoints](#-api-endpoints)
-  - [Authentication](#authentication)
-  - [Classes & Students](#classes--students)
-  - [Quizzes & AI](#quizzes--ai)
-  - [Attempts & Analytics](#attempts--analytics)
 - [📝 License](#-license)
 - [🤝 Contributing](#-contributing)
 - [💬 Support](#-support)
@@ -99,14 +85,14 @@ Quizify is a full-stack web application that revolutionizes how educators create
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology | Deployment |
-|-------|------------|------------|
-| **Frontend** | React 18, Vite, Tailwind CSS | [Vercel](https://vercel.com/) |
-| **Backend** | Node.js, Express | [Render](https://render.com/) |
-| **Database** | PostgreSQL via Supabase | [Supabase](https://supabase.com/) |
-| **AI Services** | Anthropic Claude API (`claude-sonnet-4-6`) | - |
-| **Authentication** | JWT | - |
-| **Payment** | Free-tier services | - |
+| Layer | Technology | Description |
+|-------|------------|-------------|
+| **Frontend** | React 18, Vite, Tailwind CSS | Modern, fast UI development |
+| **Backend** | Node.js, Express | RESTful API server |
+| **Database** | PostgreSQL via Supabase | Cloud-hosted relational database |
+| **AI Services** | Anthropic Claude API (`claude-sonnet-4-6`) | Quiz generation & grading |
+| **Authentication** | JWT | Secure session management |
+| **Hosting** | Vercel (Frontend), Render (Backend) | Free-tier cloud deployment |
 
 ---
 
@@ -266,56 +252,6 @@ The frontend will be available at `http://localhost:5173`.
 
 ---
 
-## 🌐 Deployment
-
-### Backend → Render
-
-1. Push your code to GitHub.
-2. Log in to [Render](https://render.com/).
-3. Click **New +** and select **Web Service**.
-4. Connect your GitHub repository.
-5. Configure the service:
-   - **Name:** `quizify-backend`
-   - **Root Directory:** `backend`
-   - **Environment:** `Node`
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-   - **Auto-Deploy:** `Yes` (optional)
-6. Add environment variables:
-   - `DATABASE_URL` (Supabase connection string)
-   - `JWT_SECRET` (your secret)
-   - `ANTHROPIC_API_KEY` (your API key)
-   - `CORS_ORIGIN` (your Vercel frontend URL)
-   - `PORT` (default: 10000)
-7. Click **Create Web Service**.
-
-Your backend will be deployed at `https://quizify-backend.onrender.com`.
-
-### Frontend → Vercel
-
-1. Log in to [Vercel](https://vercel.com/).
-2. Click **Add New... → Project**.
-3. Import your GitHub repository.
-4. Configure the project:
-   - **Root Directory:** `frontend`
-   - **Framework Preset:** `Vite`
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-5. Add environment variable:
-   - `VITE_API_URL=https://your-backend.onrender.com/api`
-6. Click **Deploy**.
-
-Your frontend will be deployed at a URL like `https://quizify.vercel.app`.
-
-### Post-Deployment Checklist
-
-- [ ] Update `CORS_ORIGIN` on Render to your Vercel domain.
-- [ ] Redeploy the backend to apply CORS changes.
-- [ ] Test the full flow (registration → login → quiz generation → quiz taking → grading).
-- [ ] Monitor Render and Vercel logs for any errors.
-
----
-
 ## 🧩 Design & Implementation Notes
 
 ### Lightweight RAG Implementation
@@ -466,7 +402,17 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-...
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
 ---
@@ -483,10 +429,10 @@ We welcome contributions! Please follow these steps:
 
 ### Development Guidelines
 
-- Follow the existing code style (ESLint, Prettier).
-- Write tests for new features.
-- Update the README if you change setup or deployment instructions.
-- Use conventional commit messages (`feat:`, `fix:`, `docs:`, etc.).
+- Follow the existing code style (ESLint, Prettier)
+- Write tests for new features
+- Update the README if you change setup or deployment instructions
+- Use conventional commit messages (`feat:`, `fix:`, `docs:`, etc.)
 
 ---
 
@@ -496,42 +442,19 @@ For support, questions, or feedback:
 
 - **GitHub Issues:** [Open an issue](https://github.com/yourusername/quizify/issues)
 - **Email:** support@quizify.com
-- **Documentation:** [https://docs.quizify.com](https://docs.quizify.com)
 
 ---
 
-## 📸 Screenshots
+## 🎯 Future Roadmap
 
-*(Add your screenshots here)*
-
-**Teacher Dashboard:**
-![Teacher Dashboard](/screenshots/teacher-dashboard.png)
-
-**AI Lab (Quiz Generation):**
-![AI Lab](/screenshots/ai-lab.png)
-
-**Student Quiz Interface:**
-![Student Quiz](/screenshots/student-quiz.png)
-
-**Analytics Dashboard:**
-![Analytics](/screenshots/analytics.png)
-
----
-
-## 🎯 Roadmap
-
-- [ ] Add support for PDF and DOCX uploads
-- [ ] Implement email notifications for students
-- [ ] Add more question types (true/false, fill-in-the-blank)
-- [ ] Support for timed quizzes with auto-submission
+- [ ] Support for PDF and DOCX uploads
+- [ ] Email notifications for students
+- [ ] More question types (true/false, fill-in-the-blank)
+- [ ] Timed quizzes with auto-submission
 - [ ] Export results as CSV/PDF
 - [ ] Mobile application (React Native)
 - [ ] Integration with popular LMS platforms (Canvas, Moodle)
 
 ---
 
-**Built with ❤️ by the Quizify Team**
-
----
-
-*Last Updated: September 2026*
+**Built with ❤️ using React, Node.js, and Claude**
