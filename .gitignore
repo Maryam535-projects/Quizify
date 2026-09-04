@@ -1,0 +1,20 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+
+# Next.js
+.next/
+out/
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
