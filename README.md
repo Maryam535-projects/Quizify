@@ -15,20 +15,44 @@ Quizify is a full-stack web application that revolutionizes how educators create
 
 ## 📸 Screenshots
 
-### Dashboard
-*Overview of classes, recent quizzes, and quick actions.*
+### 1. Dashboard
+*Overview of classes, recent quizzes, and quick actions for teachers.*
 
-![Dashboard](quizify-01-dashboard.jpg)
+<img src="quizify-01-dashboard.jpg" alt="Dashboard" width="800"/>
 
-### AI Quiz Generator
-*Create quizzes using RAG with uploaded source material.*
+**Key Features:**
+- Welcome message with teacher name
+- Recent quizzes with status
+- My Classes section with student count
+- Quick "Generate Quiz with AI" action
+- Sidebar navigation
 
-![AI Quiz Generator](quizify-02-ai-quiz-generator.jpg)
+---
 
-### Classes & Roster
+### 2. AI Quiz Generator
+*Create quizzes using RAG with uploaded source material. Questions are grounded in your content.*
+
+<img src="quizify-02-ai-quiz-generator.jpg" alt="AI Quiz Generator" width="800"/>
+
+**Form Fields:**
+- Quiz Title
+- Class Selection
+- Source Material Upload (`.txt`)
+- Question Types (Objective / Subjective)
+- Difficulty Level (1–10)
+
+---
+
+### 3. Classes & Roster
 *Manage classes, sections, and student enrollment.*
 
-![Classes & Roster](quizify-03-classes-roster.jpg)
+<img src="quizify-03-classes-roster.jpg" alt="Classes & Roster" width="800"/>
+
+**Features:**
+- Class list with subject and session
+- Student roster with roll numbers
+- Bulk import via CSV
+- Enroll students individually
 
 ---
 
@@ -132,6 +156,9 @@ quizify/
 ├── database/
 │   └── schema.sql
 │
+├── quizify-01-dashboard.jpg
+├── quizify-02-ai-quiz-generator.jpg
+├── quizify-03-classes-roster.jpg
 └── README.md
 ```
 
